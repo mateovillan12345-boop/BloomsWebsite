@@ -1,33 +1,589 @@
 <!DOCTYPE html>
-<html lang = "en">
-    <head> 
-        <title>Hello</title>
-        <style>
-            #container{
-                display: flex;
-                flex-wrap: wrap;
-            }
-            #container > div{
-                background-color: gray;
-                font-size: 20px;
-                margin: 20px;
-                padding: 20px; 
-                width: 200px;
-            }
-            #Title{
-                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-                color: brown;
-            }
-        </style>
-    </head>
-    <body> 
-        <div id="container"> 
-            <div> 1. this a text inside of a div</div>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blooms — Flores frescas a domicilio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Asegúrate de que el nombre del archivo coincida exactamente -->
+<link rel="stylesheet" href="Style.css">
+</head>
+<body>
 
-            <div style="color: bisque;"> 2. this a text inside of a div!!!</div>
-            HOLA HOLA HOLA HOLA HOLA
-            <h1 id="Title">CS50 is the best course</h1>
+<!-- ============ ANNOUNCEMENT BAR ============ -->
+<div class="announce">Pedidos antes de las <strong>12:00 PM</strong> se entregan el mismo día · Atención por WhatsApp</div>
 
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="header-inner">
+    <div class="logo">Blooms</div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#categorias">Flores</a></li>
+        <li><a href="#productos">Ocasiones</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <!-- <li><a href="#blog">Blog</a></li> -->
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="header-icons">
+      <!-- Botón de carrito en cabecera -->
+      <button class="cart-nav-btn" id="open-cart-nav" aria-label="Ver carrito">
+        🛒 <span class="cart-nav-badge" id="cart-nav-badge">0</span>
+      </button>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Menú">&#9776;</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MOBILE MENU ============ -->
+<div class="mobile-menu" id="mobile-menu">
+  <div class="close-mobile" id="close-mobile">&times;</div>
+  <ul>
+    <li><a href="#categorias">Flores</a></li>
+    <li><a href="#productos">Ocasiones</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <!-- <li><a href="#blog">Blog</a></li> -->
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="hero-slide active">
+    <img src="img carrusel.jpeg" alt="Imagen destacada 1">
+    <div class="hero-text">
+      <div class="eyebrow">Colección de temporada</div>
+      <h1>Deja que tus sentimientos florezcan</h1>
+      <p>Arreglos frescos hechos a mano, entregados el mismo día en toda la ciudad.</p>
+      <a href="#productos" class="btn">Ver colección</a>
+    </div>
+  </div>
+  <div class="hero-slide">
+    <img src="img carrusel2.jpeg" alt="Imagen destacada 2">
+    <div class="hero-text">
+      <div class="eyebrow">Nuevo</div>
+      <h1>Ramos para cada ocasión especial</h1>
+      <p>Desde cumpleaños hasta aniversarios, tenemos el arreglo perfecto.</p>
+      <a href="#productos" class="btn">Explorar ahora</a>
+    </div>
+  </div>
+  <div class="hero-slide">
+    <img src="img-carrusel3.jpeg" alt="Imagen destacada 3">
+    <div class="hero-text">
+      <div class="eyebrow">Entrega el mismo día</div>
+      <h1>Escríbenos y arma tu ramo ideal</h1>
+      <p>Elige tu arreglo favorito y coordina todos los detalles por WhatsApp.</p>
+      <a href="#productos" class="btn">Ver productos</a>
+    </div>
+  </div>
+  <div class="hero-dots" id="hero-dots"></div>
+</section>
+
+<!-- ============ CATEGORÍAS ============ -->
+<!-- CATEGORÍAS -->
+<section class="section" id="categorias">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Explora</div>
+      <h2>Compra por categoría</h2>
+    </div>
+    <div class="cat-grid">
+      <a href="#productos" class="cat-card filter-cat" data-cat="Todas">
+        <div class="cat-img"><img src="1.jpeg" alt="Todas"></div>
+        <span>Todas las flores</span>
+      </a>
+      <a href="#productos" class="cat-card filter-cat" data-cat="Rosas">
+        <div class="cat-img"><img src="2.jpeg" alt="Rosas"></div>
+        <span>Rosas</span>
+      </a>
+      <a href="#productos" class="cat-card filter-cat" data-cat="Ocasiones">
+        <div class="cat-img"><img src="3.jpeg" alt="Lirios"></div>
+        <span>Lirios</span>
+      </a>
+      <a href="#productos" class="cat-card filter-cat" data-cat="Regalos">
+        <div class="cat-img"><img src="4.jpeg" alt="Gerberas"></div>
+        <span>Gerberas</span>
+      </a>
+    </div>
+  </div>
+</section>
+<!-- ============ BUSCADOR DE RAMOS (NUEVO DISEÑO) ============ -->
+<section class="section search-section-inline" id="buscador">
+  <div class="container">
+    <h2 class="search-title">¿Qué estás buscando?</h2>
+    
+    <div class="search-bar-pill">
+      
+      <!-- FECHA -->
+      <div class="search-block">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+          <path d="M12 14c-1 0-2 1-2 2s1 2 2 2 2-1 2-2-1-2-2-2z"></path>
+        </svg>
+        <div class="search-text-wrapper">
+          <span class="search-label">Entrega</span>
+          <div class="custom-select-wrapper">
+            <input type="date" id="filter-date" class="hidden-native-input">
+            <span class="search-value" id="display-date">seleccione una fecha</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="var(--sage)"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
         </div>
-    </body>
+      </div>
+
+      <div class="search-divider"></div>
+
+      <!-- OCASIÓN -->
+      <div class="search-block">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 22c4-4 4-10 0-14-4 4-4 10 0 14z"></path>
+          <path d="M12 8c2-2 6-2 8 0 2 2 2 6 0 8"></path>
+          <path d="M12 8c-2-2-6-2-8 0-2 2-2 6 0 8"></path>
+        </svg>
+        <div class="search-text-wrapper">
+          <span class="search-label">Para</span>
+          <div class="custom-select-wrapper">
+            <select id="filter-occasion" class="hidden-native-input">
+              <option value="Todos">cualquier ocasión</option>
+              <option value="Cumpleaños">cumpleaños</option>
+              <option value="Aniversario">aniversario</option>
+              <option value="Graduación">graduación</option>
+              <option value="Flores amarillas">flores amarillas</option>
+              <option value="Amor de pareja">amor de pareja</option>
+              <option value="Ramos jardín">ramos jardín</option>
+              <option value="Ramos amistad">ramos amistad</option>
+            </select>
+            <span class="search-value" id="display-occasion">cualquier ocasión</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="var(--sage)"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="search-divider"></div>
+
+      <!-- PRECIO -->
+      <div class="search-block">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+          <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+        <div class="search-text-wrapper">
+          <span class="search-label">Precio</span>
+          <div class="custom-select-wrapper">
+            <select id="filter-price" class="hidden-native-input">
+              <option value="1000">sin límite</option>
+              <option value="100">hasta Bs 100</option>
+              <option value="150">hasta Bs 150</option>
+              <option value="250">hasta Bs 250</option>
+              <option value="500">hasta Bs 500</option>
+            </select>
+            <span class="search-value" id="display-price">sin límite</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="var(--sage)"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTÓN -->
+      <button id="btn-search" class="btn search-pill-btn">Ver la selección</button>
+    
+    </div>
+  </div>
+</section>
+<!-- ============ PRODUCTOS DESTACADOS ============ -->
+<section class="section" id="productos">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Los favoritos</div>
+      <h2>Más vendidos esta semana</h2>
+      <p>Una selección de nuestros arreglos más pedidos, frescos y listos para entregar hoy mismo.</p>
+    </div>
+    <div class="product-grid" id="product-container">
+      <div class="loading-state">Cargando flores frescas...</div>
+    </div>
+    <div class="see-all"><a href="#productos" id="btn-ver-todos" class="btn outline">Ver todos los productos</a></div>
+  </div>
+</section>
+
+<!-- ============ BANDA DE VALORES ============ -->
+<section class="value-band">
+  <div class="container value-grid">
+    <div>
+      <h4>Entrega el mismo día</h4>
+      <p>Ordenando antes de las 12pm</p>
+    </div>
+    <div>
+      <h4>Flores frescas</h4>
+      <p>Seleccionadas cada semana</p>
+    </div>
+    <div>
+      <h4>Hecho a mano</h4>
+      <p>Diseño local y artesanal</p>
+    </div>
+    <div>
+      <h4>Pago seguro</h4>
+      <p>Transferencias, QR y efectivo</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESEÑAS ============ -->
+<section class="section reviews-wrap">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Testimonios</div>
+      <h2>Lo que dicen nuestros clientes</h2>
+    </div>
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"El ramo llegó justo a tiempo y era aún más bonito de lo que esperaba. Definitivamente volveré a pedir."</p>
+        <div class="review-author">
+          <div class="review-avatar">A</div>
+          <span>Ana M.</span>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Proceso de pedido súper fácil y el equipo fue muy amable cuando llamé para hacer un cambio de último momento."</p>
+        <div class="review-author">
+          <div class="review-avatar">J</div>
+          <span>Jorge L.</span>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Mi mamá quedó encantada con el arreglo. Las flores duraron casi dos semanas frescas."</p>
+        <div class="review-author">
+          <div class="review-avatar">C</div>
+          <span>Camila R.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOBRE NOSOTROS ============ -->
+<section class="section" id="nosotros">
+  <div class="container about-section">
+    <div class="about-img">
+      <img src="6.jpeg" alt="Foto del equipo">
+    </div>
+    <div class="about-text">
+      <div class="eyebrow">Nuestra historia</div>
+      <h2>Deja que tus sentimientos florezcan</h2>
+      <p>Bloom &amp; Co. nació de una pasión por las flores y el deseo de acercar diseños frescos y creativos a cada ocasión, grande o pequeña.</p>
+      <p>Trabajamos con proveedores locales para asegurar que cada arreglo llegue fresco, y ponemos el mismo cuidado en un ramo de cumpleaños que en una boda completa.</p>
+      <a href="#contacto" class="btn outline">Conócenos</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOG ============ -->
+<!-- <section class="section" id="blog" style="background:var(--cream-2);">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Del blog</div>
+      <h2>Ideas y tendencias florales</h2>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <img src="https://placehold.co/500x310/F1EAD9/2B2A26?text=Blog+1" alt="Imagen de artículo 1">
+        <div class="date">12 Mar 2026</div>
+        <h3>Cómo cuidar tus flores para que duren más</h3>
+        <p>Consejos simples para que cada arreglo se mantenga fresco por más tiempo.</p>
+      </div>
+      <div class="blog-card">
+        <img src="https://placehold.co/500x310/F1EAD9/2B2A26?text=Blog+2" alt="Imagen de artículo 2">
+        <div class="date">02 Feb 2026</div>
+        <h3>Tendencias florales para esta temporada</h3>
+        <p>Los colores y estilos que más estamos viendo en nuestros talleres.</p>
+      </div>
+      <div class="blog-card">
+        <img src="https://placehold.co/500x310/F1EAD9/2B2A26?text=Blog+3" alt="Imagen de artículo 3">
+        <div class="date">18 Ene 2026</div>
+        <h3>Guía de significados: qué flor regalar y cuándo</h3>
+        <p>Una guía rápida para elegir el arreglo perfecto según la ocasión.</p>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- (SECCIÓN NEWSLETTER ELIMINADA) -->
+<!-- ============ UBICACIÓN Y HORARIOS ============ -->
+<section class="section" id="ubicacion">
+  <div class="container">
+    <!-- El section-head se oculta en desktop (el título vive dentro de .location-info) -->
+    <div class="section-head">
+      <div class="eyebrow">Visítanos</div>
+      <h2>Nuestra Tienda</h2>
+    </div>
+    <div class="location-grid">
+      <div class="location-img"></div><!-- oculto por CSS -->
+
+      <div class="location-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d478.18106244745854!2d-68.13389106963365!3d-16.503440144994915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915f207a8944f657%3A0xa8f33a0b2968bfda!2sCa%C3%B1ada%20Strongest%201620%2C%20La%20Paz%2C%20Bolivia!5e0!3m2!1sen!2sca!4v1790386441129!5m2!1sen!2sca"
+          allowfullscreen="" loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin">
+        </iframe>
+      </div>
+
+      <div class="location-info">
+        <span class="loc-eyebrow">Visítanos</span>
+        <h2>Nuestra Tienda</h2>
+        <div class="loc-divider"></div>
+
+        <div class="loc-row">
+          <span class="loc-label">Días de atención</span>
+          <span class="loc-value">Lunes a Sábado</span>
+        </div>
+
+        <div class="loc-row">
+          <span class="loc-label">Horario</span>
+          <span class="loc-value"><strong>9:00 AM – 5:30 PM</strong></span>
+        </div>
+
+        <div class="loc-row">
+          <span class="loc-label">Dirección</span>
+          <span class="loc-value">Cañada Strongest 1620, La Paz, Bolivia</span>
+        </div>
+
+        <a href="https://maps.app.goo.gl/qpAD64JEp6C27reJA" target="_blank" class="btn outline">
+          Abrir en Google Maps
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PREGUNTAS FRECUENTES (FAQ) ============ -->
+<section class="section faq-section" id="faq" style="background:var(--cream-2);">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Dudas comunes</div>
+      <h2>Preguntas Frecuentes</h2>
+    </div>
+    <div class="faq-accordion">
+      
+      <div class="faq-item">
+        <button class="faq-question">¿Con cuánto tiempo de anticipación debo hacer mi pedido? <span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Para entregas el mismo día, debes realizar tu pedido antes de las 12:00 PM. Para ramos grandes o con flores muy específicas, sugerimos 24 a 48 horas de anticipación.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">¿Qué métodos de pago aceptan? <span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Aceptamos pagos por transferencia bancaria, código QR y efectivo al momento del recojo en tienda.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">¿Cómo sé si mi pedido fue entregado? <span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Una vez que nuestro repartidor complete la entrega, te enviaremos un mensaje de confirmación por WhatsApp.</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ POLÍTICAS E INFORMACIÓN IMPORTANTE ============ -->
+<section class="section policies-section" id="politicas">
+  <div class="container">
+    <div class="policies-grid">
+      
+      <div class="policy-card">
+        <div class="policy-icon">
+          <!-- Ícono de Foto/Referencia Minimalista -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+            <polyline points="21 15 16 10 5 21"></polyline>
+          </svg>
+        </div>
+        <h3>Fotografías de Referencia</h3>
+        <p>Las fotos de nuestro catálogo son de <strong>referencia</strong>. Es muy difícil que el arreglo quede exactamente igual por temas de temporada, disponibilidad de flores diarias o inventario de floreros. Sin embargo, te garantizamos que siempre respetaremos la esencia, el valor y la paleta de colores de tu elección.</p>
+      </div>
+
+      <div class="policy-card">
+        <div class="policy-icon">
+          <!-- Ícono de Reloj/Envío Minimalista -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <h3>Políticas de Envío</h3>
+        <p>Por respeto a la logística y al tiempo de todos nuestros clientes, el repartidor tiene un tiempo de espera <strong>máximo de 15 minutos</strong> al llegar al punto de entrega. Te pedimos estar atento para evitar contratiempos y asegurar que tus flores lleguen frescas y a tiempo.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ============ FOOTER ============ -->
+<footer id="contacto">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <div class="logo" style="margin-bottom:14px;">Blooms</div>
+        <p>Florería boutique especializada en arreglos frescos para bodas, eventos y el día a día.</p>
+        <p>Bolivia</p>
+        <!-- Enlaces a redes sociales con Iconos -->
+<div class="footer-social">
+  
+  <!-- Facebook -->
+  <a href="https://www.facebook.com/profile.php?id=61571823494826" target="_blank" aria-label="Facebook">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
+    </svg>
+  </a>
+  
+  <!-- Instagram -->
+  <a href="https://www.instagram.com/_blooms.lp/?hl=es" target="_blank" aria-label="Instagram">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+    </svg>
+  </a>
+  
+  <!-- TikTok -->
+  <a href="https://www.tiktok.com/@bloomsdetalles?is_from_webapp=1&sender_device=pc" target="_blank" aria-label="TikTok">
+    <svg width="15" height="15" viewBox="0 0 448 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14Z"/>
+    </svg>
+  </a>
+
+</div>
+      </div>
+      <div>
+        <h4>Explorar</h4>
+        <ul>
+          <li><a href="#categorias">Flores</a></li>
+          <li><a href="#productos">Ocasiones</a></li>
+          <!-- <li><a href="#blog">Blog</a></li> -->
+        </ul>
+      </div>
+      <div>
+        <h4>Políticas</h4>
+        <ul>
+          <li><a href="#">Política de devoluciones</a></li>
+          <li><a href="#">Política de envíos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li>Atención por WhatsApp</li>
+          <li>Lun a Sáb: 9am – 6pm</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Bloom &amp; Co. Todos los derechos reservados.</span>
+      <span>Hecho con &#127801;</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ CARRITO FLOTANTE Y DRAWER ============ -->
+<div class="floating-cart-btn" id="floating-cart-btn" title="Ver carrito">
+  🛒 <span class="cart-count-badge" id="cart-count">0</span>
+</div>
+
+<div class="cart-overlay" id="cart-overlay"></div>
+<aside class="cart-drawer" id="cart-drawer">
+  <div class="cart-header">
+    <h3>Tu Carrito</h3>
+    <button class="cart-close" id="cart-close">&times;</button>
+  </div>
+
+  <div class="cart-body">
+    <!-- Lista de Ramos -->
+    <div class="cart-items" id="cart-items">
+      <p class="empty-cart-msg">Tu carrito está vacío.</p>
+    </div>
+
+    <!-- Extras Recomendados -->
+    <div class="cart-extras">
+      <h4>¿Deseas agregar un detalle extra?</h4>
+      <div class="extras-grid">
+        <label class="extra-card">
+          <input type="checkbox" data-name="Tarjeta dedicatoria especial" data-price="15" class="extra-checkbox">
+          <div>
+            <strong>Tarjeta dedicatoria</strong>
+            <span>+Bs 15.00</span>
+          </div>
+        </label>
+        <label class="extra-card">
+          <input type="checkbox" data-name="Caja de chocolates" data-price="35" class="extra-checkbox">
+          <div>
+            <strong>Caja de chocolates</strong>
+            <span>+Bs 35.00</span>
+          </div>
+        </label>
+        <label class="extra-card">
+          <input type="checkbox" data-name="Globo metálico con helio" data-price="20" class="extra-checkbox">
+          <div>
+            <strong>Globo metálico</strong>
+            <span>+Bs 20.00</span>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Opciones de entrega obligatorias -->
+    <div class="cart-checkout-details">
+      <h4>Detalles de entrega</h4>
+      
+      <div class="form-group">
+        <label>Modalidad de entrega *</label>
+        <div class="radio-group">
+          <label><input type="radio" name="tipo_entrega" value="Delivery" checked> Delivery</label>
+          <label><input type="radio" name="tipo_entrega" value="Recojo en tienda"> Recojo en tienda</label>
+        </div>
+      </div>
+
+      <div class="form-group" id="direccion-field">
+        <label for="direccion_input">Dirección de entrega *</label>
+        <input type="text" id="direccion_input" placeholder="Zona, Calle y N° o referencia">
+      </div>
+
+      <div class="form-group" style="display: flex; gap: 10px;">
+        <div style="flex: 1;">
+          <label for="fecha_entrega">Fecha *</label>
+          <input type="date" id="fecha_entrega" required style="width: 100%;">
+        </div>
+        <div style="flex: 1;">
+          <label for="hora_entrega">Hora *</label>
+          <input type="time" id="hora_entrega" min="09:00" max="18:00" required style="width: 100%;">
+        </div>
+      </div>
+      <small style="display: block; font-size: 11px; color: gray; margin-top: -8px; margin-bottom: 12px;">
+        Horario de atención: 9:00 AM - 6:00 PM
+      </small>
+
+      <div class="form-group">
+        <label for="nota_pedido">Mensaje para dedicatoria o nota</label>
+        <textarea id="nota_pedido" rows="2" placeholder="Dedicatoria o instrucciones especiales"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total estimado:</span>
+      <strong id="cart-total-price">Bs 0.00</strong>
+    </div>
+    <button class="btn btn-whatsapp-checkout" id="btn-checkout">
+      Confirmar pedido por WhatsApp
+    </button>
+  </div>
+</aside>
+
+<button id="back-top" aria-label="Volver arriba">&#8593;</button>
+
+<!-- Enlaza el archivo script verificando su nombre exacto en tu carpeta -->
+<script src="Script.js"></script>
+
+</body>
 </html>
